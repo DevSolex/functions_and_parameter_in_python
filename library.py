@@ -31,6 +31,10 @@ def call_function(option):
 		add_book()
 	elif option == 3:
 		borrow_book()
+	elif option == 4:
+		return_book()
+	elif option == 5:
+		borrowed_book()
 
 def display_books():
 	if len(library) != 0:
@@ -46,16 +50,21 @@ def add_book():
 		print(f'YOU SUCCESSFULLY ADDED {book_name}')
 def borrow_book():
 	book_name = input('Enter book name to borrow:\n>>')
-	for book in library:
-		if book_name == book:
-			print(f'YOU SUCCESSFULLY BORROW {book_name}')
-			borrowed_books.append(book.capitalize())
-			borrowed_books.remove(book)
-			break
-		else:
-			print('BOOK DOES NOT EXIST!')
-			break
+	if book_name in library:
+		print(f'YOU SUCCESSFULLY BORROW {book_name}')
+		borrowed_books.append(book_name)
+		library.remove(book_name)
+	else:
+		print('BOOK DOES NOT EXIST!')
 
-	
+def return_book():
+	book_name = input('Enter book name to return:\n>>')
+	if book_name in borrowed_books:
+		library.append(book_name)
+		print(f'YOU SUCCESSFULLY RETURN {book_name}!')
+	else:
+		print("HAVEN'T BORROW THIS BOOK!")
+def borrowed_book():
+	print(borrowed_books)
 
 start()
