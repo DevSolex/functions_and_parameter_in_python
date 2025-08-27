@@ -30,7 +30,7 @@ def call_function(option):
 	elif option == 6:
 		student_names()
 	elif option == 7:
-		print('EXITING PROGRAM❌..........')
+		print('EXITING PROGRAM..........\nPROGRAM EXIT❌')
 		sys.exit()
 		
 
@@ -53,7 +53,7 @@ def borrow_book():
 	if book_name in library:
 		print(f'{student_name} SUCCESSFULLY BORROW {book_name}')
 		borrowed_books.append(book_name)
-		Students_that_borrow_books.append((student_name.upper(), book_name))
+		Students_that_borrow_books.append((student_name.capitalize(), book_name))
 		library.remove(book_name)
 	else:
 		print('BOOK DOES NOT EXIST!')
@@ -66,7 +66,10 @@ def return_book():
 	else:
 		print("HAVEN'T BORROW THIS BOOK!")
 def borrowed_book():
-	print(borrowed_books)
+	if len(borrowed_books) > 0:
+		print(borrowed_books)
+	else:
+		print('NOT BORROWED BOOKS!')
 
 def student_names():
     if len(Students_that_borrow_books) == 0:
